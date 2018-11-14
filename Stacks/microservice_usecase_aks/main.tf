@@ -41,14 +41,14 @@ module "vnet" {
 }
 
 # Assign IAM Role Access for vnet
-module "azurerm_vnet_iam_role_assign" {
-  source = "../../Services/azurerm_iam_role"  
-  resource_name = "${module.vnet.vnet_name}"
-  resource_group_name = "${var.resource_group_name}"
-  service_principal_id = "${var.client_id}"
-  account_type = "Microsoft.Network/virtualNetworks"
-  role="Reader"
-}
+#module "azurerm_vnet_iam_role_assign" {
+  #source = "../../Services/azurerm_iam_role"  
+  #resource_name = "${module.vnet.vnet_name}"
+  #resource_group_name = "${var.resource_group_name}"
+  #service_principal_id = "${var.client_id}"
+  #account_type = "Microsoft.Network/virtualNetworks"
+  #role="Reader"
+#}
 
 module "clusterRandomnName" {
   source = "../../Services/azure_randomn_name"
@@ -72,14 +72,14 @@ module "azurerm_kubernetes_cluster" {
 }
 
 # Assign IAM Role Access for aks cluster
-module "azurerm_aks_cluster_iam_role_assign" {
-  source = "../../Services/azurerm_iam_role"  
-  resource_name = "${module.azurerm_kubernetes_cluster.aks_clustername}"
-  resource_group_name = "${var.resource_group_name}"
-  service_principal_id = "${var.client_id}"
-  account_type="Microsoft.ContainerService/managedClusters"
-  role="Reader"
-}
+#module "azurerm_aks_cluster_iam_role_assign" {
+  #source = "../../Services/azurerm_iam_role"  
+  #resource_name = "${module.azurerm_kubernetes_cluster.aks_clustername}"
+  #resource_group_name = "${var.resource_group_name}"
+  #service_principal_id = "${var.client_id}"
+  #account_type="Microsoft.ContainerService/managedClusters"
+  #role="Reader"
+#}
 
 module "acrRandomnName" {
   source = "../../Services/azure_randomn_name"
